@@ -4,10 +4,8 @@ import { CategoriesRecords } from './categories-records.model';
 
 export interface CategoriesRecordsState extends EntityState<CategoriesRecords> {}
 
-// Create an entity adapter for CategoriesRecords
 export const adapter: EntityAdapter<CategoriesRecords> = createEntityAdapter<CategoriesRecords>({
-  selectId: (record) => record.categoryId, // Specify the unique identifier
+  selectId: (record) => record.categoryId, 
 });
 
-// Initialize the state using the adapter
 export const initialState: CategoriesRecordsState = adapter.getInitialState();

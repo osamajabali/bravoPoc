@@ -24,7 +24,7 @@ export class CategoriesRecordsService {
     }
 
     getCategoryById(id: number): Observable<CategoriesRecords> {
-        return this.http.get<CategoriesRecords>(`Category/GetCategoryById?Id=${id}`); // Replace with your API endpoint
+        return this.http.get<CategoriesRecords>(`Category/GetCategoryById?Id=${id}`);
     }
 
     updateCategory(category: CategoriesRecords , formData : FormData): Observable<CategoriesRecords> {

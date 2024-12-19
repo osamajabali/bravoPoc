@@ -20,13 +20,13 @@ export class CategoriesRecordsEffects {
 
     addCategory$ = createEffect(() =>
         this.actions$.pipe(
-          ofType(addCategory), // Listen for the `addCategory` action
+          ofType(addCategory),
           exhaustMap(({ payload, file }) =>
             this.categoriesRecordsService.addCategory(payload, file).pipe(
               map((newCategory) =>
-                addCategorySuccess({ payload: newCategory }) // Dispatch success action
+                addCategorySuccess({ payload: newCategory })
               ),
-              catchError(() => EMPTY) // Handle errors appropriately
+              catchError(() => EMPTY) 
             )
           )
         )
@@ -34,11 +34,11 @@ export class CategoriesRecordsEffects {
     
     deleteCategory$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(deleteCategory), // Listen for the delete action
+            ofType(deleteCategory), 
             exhaustMap(({ id }) =>
                 this.categoriesRecordsService.deleteCategory(id).pipe(
-                    map(() => deleteCategorySuccess({ id })), // Dispatch success action with the ID
-                    catchError(() => EMPTY) // Handle errors appropriately
+                    map(() => deleteCategorySuccess({ id })), 
+                    catchError(() => EMPTY) 
                 )
             )
         )
@@ -46,16 +46,16 @@ export class CategoriesRecordsEffects {
 
     updateCategory$ = createEffect(() =>
         this.actions$.pipe(
-          ofType(updateCategory), // Listen for the updateCategory action
+          ofType(updateCategory), 
           exhaustMap(({ payload, file }) =>
             this.categoriesRecordsService.updateCategory(payload, file).pipe(
               map((updatedCategory) => {
-                console.log('Effect - Updated category:', updatedCategory); // Debugging
-                return updateCategorySuccess({ payload: updatedCategory }); // Dispatch success action
+                console.log('Effect - Updated category:', updatedCategory); 
+                return updateCategorySuccess({ payload: updatedCategory }); 
               }),
               catchError((error) => {
-                console.error('Effect - Error updating category:', error); // Handle error
-                return EMPTY; // Or dispatch a failure action if needed
+                console.error('Effect - Error updating category:', error); 
+                return EMPTY; 
               })
             )
           )

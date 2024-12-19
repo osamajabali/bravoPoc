@@ -40,15 +40,15 @@ export const deleteCategorySuccess = createAction(
 
 export const getCategoryByIdSuccess = createAction(
     actionsList.getCategoryByIdSuccess,
-    props<{ category: CategoriesRecords }>() // Action to pass the fetched category
+    props<{ category: CategoriesRecords }>() 
 );
 
 export const updateCategory = createAction(
     actionsList.updateCategory,
-    props<{ payload: CategoriesRecords; file: FormData }>() // Accept payload and file
+    props<{ payload: CategoriesRecords; file: FormData }>() 
 );
   
   export const updateCategorySuccess = createAction(
     actionsList.updateCategorySuccess,
-    props<{ payload: CategoriesRecords }>() // Pass the updated category for state update
+    props<{ payload: CategoriesRecords }>() 
   );

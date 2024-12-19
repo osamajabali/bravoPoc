@@ -37,12 +37,12 @@ export class CategoriesTableComponent implements OnInit {
 
   displayedColumns: string[] = ['categoryId', 'categoryName', 'imageUrl', 'actions'];
   dataSource = new MatTableDataSource<CategoriesRecords>();
-  allCategories: CategoriesRecords[] = []; // Holds all student data
+  allCategories: CategoriesRecords[] = [];
   categoriesControl: FormControl = new FormControl();
 
-  currentPage: number = 1; // Current page
-  pageSize: number = 10; // Items per page
-  totalRecords: number = 0; // Total number of records
+  currentPage: number = 1; 
+  pageSize: number = 10; 
+  totalRecords: number = 0;
 
   actions = [
     {
@@ -67,20 +67,20 @@ export class CategoriesTableComponent implements OnInit {
 
   getRecords() {
     this.store.select(selectAllCategories).subscribe((res: CategoriesRecords[]) => {
-      this.allCategories = res; // Store all records
-      this.totalRecords = res.length; // Set total number of records
-      this.updatePagination(); // Show the first page
+      this.allCategories = res; 
+      this.totalRecords = res.length;
+      this.updatePagination(); 
     });
 
     this.categoriesControl.valueChanges.subscribe((value: number) => {
       if (value) {
         this.store.select(selectStudentById(value)).subscribe((res) => {
           if (res) {
-            this.allCategories = [res]; // Set filtered data
+            this.allCategories = [res];
           } else {
             this.loadAllCategories();
           }
-          this.updatePagination(); // Reset pagination
+          this.updatePagination(); 
         });
       } else {
         this.loadAllCategories();
@@ -96,14 +96,12 @@ export class CategoriesTableComponent implements OnInit {
     });
   }
 
-  // Updates the dataSource based on current page and page size
   updatePagination() {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-    this.dataSource.data = this.allCategories.slice(startIndex, endIndex); // Slice data for the current page
+    this.dataSource.data = this.allCategories.slice(startIndex, endIndex); 
   }
 
-  // Navigates to a specific page
   goToPage(page: number) {
     if (page < 1 || page > this.totalPages()) {
       return;
@@ -112,7 +110,6 @@ export class CategoriesTableComponent implements OnInit {
     this.updatePagination();
   }
 
-  // Calculate total number of pages
   totalPages(): number {
     return Math.ceil(this.totalRecords / this.pageSize);
   }
@@ -134,7 +131,14 @@ export class CategoriesTableComponent implements OnInit {
     } else if (!filterValue.categoryId && filterValue.categoryName) {
       const filter = filterValue.categoryName.trim().toLowerCase();
       filteredData = this.allCategories.filter(student =>
-        student.categoryName.includes(filter)
+        student.categoryName.toLowerCase().includes(filter)
+      );
+    } else if (filterValue.categoryId && filterValue.categoryName) {
+      const idFilter = filterValue.categoryId.toString().trim().toLowerCase();
+      const nameFilter = filterValue.categoryName.trim().toLowerCase();
+      filteredData = this.allCategories.filter(student =>
+        student.categoryId.toString().includes(idFilter) &&
+        student.categoryName.toLowerCase().includes(nameFilter)
       );
     }
 
@@ -161,10 +165,10 @@ export class CategoriesTableComponent implements OnInit {
 
   editUser(category: CategoriesRecords) {
     this.dialog.open(AddCategoryComponent, {
-      width: '700px', // Optional: customize dialog width
+      width: '700px',
       height: '100%',
-      position: { left: '0px' }, // Set position to open from the left
-      data: { categoryId: category.categoryId ? category.categoryId : 0 }, // Optional: pass data
+      position: { left: '0px' }, 
+      data: { categoryId: category.categoryId ? category.categoryId : 0 }, 
     });;
   }
 
@@ -175,9 +179,9 @@ export class CategoriesTableComponent implements OnInit {
 
   addCategory() {
     const dialogRef = this.dialog.open(AddCategoryComponent, {
-      width: '700px', // Optional: customize dialog width
+      width: '700px', 
       height: '100%',
-      position: { left: '0px' }, // Set position to open from the left
+      position: { left: '0px' },
     });
 
     dialogRef.afterClosed().subscribe((result: { success: boolean, category: CategoriesRecords }) => {
@@ -193,8 +197,8 @@ export class CategoriesTableComponent implements OnInit {
 
   openFilterModal() {
     const dialogRef = this.dialog.open(CategoryFilterComponent, {
-      width: '700px', // Optional: customize dialog width
-      position: { left: '0px' }, // Set position to open from the left
+      width: '700px',
+      position: { left: '0px' }, 
       height: '100%',
     });
 
@@ -211,20 +215,16 @@ export class CategoriesTableComponent implements OnInit {
   }
 
   downloadExcel() {
-    // Prepare the data for export
     const exportData = this.allCategories.map(student => ({
       'Category ID': student.categoryId,
       'Category Name': student.categoryName,
       'Image URL': student.imageUrl,
     }));
 
-    // Create a worksheet
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(exportData);
 
-    // Create a workbook and append the worksheet
     const workbook: XLSX.WorkBook = { Sheets: { 'Categories': worksheet }, SheetNames: ['Categories'] };
 
-    // Export the workbook to an Excel file
     XLSX.writeFile(workbook, 'Categories.xlsx');
   }
 

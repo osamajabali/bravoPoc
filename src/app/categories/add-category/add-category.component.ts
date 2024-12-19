@@ -52,26 +52,23 @@ export class AddCategoryComponent implements OnInit {
 
       if (this.categoryId) {
         const formData = new FormData();
-        formData.append('File', this.uploadedImage || ''); // Optional image upload
+        formData.append('File', this.uploadedImage || '');
         this.store.dispatch(updateCategory({ payload: categoryData, file: formData }));
       } else {
-        // Add new category
         const formData = new FormData();
-        formData.append('File', this.uploadedImage || ''); // Optional image upload
+        formData.append('File', this.uploadedImage || '');
         this.store.dispatch(addCategory({ payload: categoryData, file: formData }));
       }
 
-      // Close the dialog immediately after submit
       this.dialogRef.close({ success: true, category: categoryData });
     } else {
-      console.error('Form is invalid'); // Handle validation errors
+      console.error('Form is invalid');
     }
   }
 
 
   getCategoryByID() {
     this.categoriesRecordsService.getCategoryById(this.categoryId).subscribe((category) => {
-      // Update the form with the fetched category
       this.form.patchValue({
         categoryId: category.categoryId,
         categoryName: category.categoryName,
@@ -85,7 +82,7 @@ export class AddCategoryComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input?.files && input.files.length > 0) {
       this.uploadedImage = input.files[0];
-      console.log(this.uploadedImage); // You can handle the file here (e.g., upload to a server).
+      console.log(this.uploadedImage);
     }
   }
 

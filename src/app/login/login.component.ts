@@ -23,14 +23,12 @@ export class LoginComponent implements OnInit {
 	constructor(private fb: FormBuilder , private router : Router , private loginService : LoginService) {}
   
 	ngOnInit(): void {
-	  // Initialize the form group with controls
 	  this.loginForm = this.fb.group({
 		email: ['', [Validators.required, Validators.email]],
 		password: ['', [Validators.required, Validators.minLength(6)]]
 	  });
 	}
   
-	// Submit handler for the form
 	onSubmit(): void {
 		if(this.loginForm.invalid){
 			return

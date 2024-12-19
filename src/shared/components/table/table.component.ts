@@ -58,7 +58,7 @@ export class TableComponent<T> implements OnInit {
   }
 
   emitPageChange(event: PageEvent) {
-    const newPage = event.pageIndex + 1; // Convert 0-based index to 1-based
+    const newPage = event.pageIndex + 1;
     this.pageChangeEvent.emit(newPage);
   }
 
