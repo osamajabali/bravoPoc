@@ -1,0 +1,24 @@
+.container {
+    border-radius: 10px; /* Smooth rounded corners */
+    padding: 20px; /* Internal spacing */
+    margin: 20px auto; /* Centering with spacing */
+    max-width: 1200px; /* Maximum width for large screens */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect */
+.custom-container:hover {
+    box-shadow: 
+        0px 8px 16px rgba(0, 0, 0, 0.15), 
+        0px 3px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px); /* Slight upward movement */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .custom-container {
+        padding: 15px;
+        margin: 10px;
+        border-radius: 8px;
+    }
+}

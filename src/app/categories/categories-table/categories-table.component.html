@@ -1,0 +1,23 @@
+<div class="container">
+  <app-table
+  [tableData]="dataSource.data"
+  [collectionSize]="totalRecords"
+  [pageSize]="pageSize"
+  [page]="currentPage"
+  [tableHeaders]="displayedColumns"
+  [displayColumns]="getDisplayColumns"
+  [isViewOnly]="false" 
+  [removeAddButton]="false"
+  [removeActions]="true"
+  [actionItems]="actions"
+  [tableHeaderTitle]="'Student Records'"
+  [tableHeaderSubtitle]="'Manage and view student records'"
+  [tableHeaderButton]="'Add Student'"
+  (pageChangeEvent)="goToPage($event)"
+  (addButtonEvent)="addCategory()"
+  (downloadExcel)="downloadExcel()"
+  (openFilterModalEvent)="openFilterModal()"
+  (pageChangeEvent)="loadAllCategories()">
+</app-table>
+
+</div>

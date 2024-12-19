@@ -1,0 +1,88 @@
+.mat-container {
+  background-color: rgb(36 85 118);
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    color: white;
+    box-shadow:
+    #46b8da 0px -5px 10px, /* Blue shadow at the top */
+    #46b8da 0px -5px 10px, /* Second blue shadow for intensity */
+    rgba(0, 0, 0, 0.22) 0px -5px 3px; /* Subtle rgb(36 85 118) shadow at the top */
+
+
+  }
+
+  .table-container {
+    overflow-x: auto;
+    box-shadow:
+      #46b8da 0px 5px 10px,
+      #46b8da 0px 5px 10px,
+      rgba(0, 0, 0, 0.22) 0px 5px 3px;
+  }
+
+  mat-table {
+    background-color: rgb(36 85 118);
+    width: 100%;
+
+    th {
+      width: fit-content;
+
+      font-weight: bold;
+    }
+
+    td {
+      width: fit-content;
+      vertical-align: middle;
+    }
+  }
+
+  mat-paginator {
+    background-color: rgb(36 85 118);
+    color: white;
+    box-shadow:
+    #46b8da 0px 5px 10px,
+    #46b8da 0px 5px 10px,
+    rgba(0, 0, 0, 0.22) 0px 5px 3px;
+
+  }
+}
+
+.mat-mdc-cell {
+  white-space: nowrap;
+  background-color: rgb(36 85 118);
+  color: white;
+}
+
+.mat-mdc-header-row {
+  background-color: rgb(36 85 118);
+  color: white
+}
+
+.view-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  :hover {
+    color: grey;
+  }
+}
+
+.table-header-actions {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.mat-mdc-raised-button {
+  background-color: #46b8da !important;
+  color: white !important;
+}
+
+.full-image{
+  cursor: pointer;
+}

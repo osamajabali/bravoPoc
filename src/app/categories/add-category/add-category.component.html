@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>Add new category</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Category Id Field -->
+    <mat-form-field appearance="outline" class="full-width custom-field">
+      <mat-label>Category Id</mat-label>
+      <input matInput formControlName="categoryId" type="number" placeholder="Enter text" required>
+      <mat-error *ngIf="form.get('categoryId')?.hasError('required')">
+        Category Id is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Category Name Field -->
+    <mat-form-field appearance="outline" class="full-width custom-field">
+      <mat-label>Category Name</mat-label>
+      <input matInput formControlName="categoryName" type="text" placeholder="Enter name" required>
+      <mat-error *ngIf="form.get('categoryName')?.hasError('required')">
+        Category Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Image URL Field -->
+    <mat-form-field appearance="outline" class="full-width custom-field">
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="imageUrl" type="text" placeholder="Enter URL">
+      <mat-error *ngIf="form.get('imageUrl')?.hasError('required')">
+        Image URL is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Image Upload Field -->
+    <div class="file-upload custom-field">
+      <label for="file" class="file-label">Upload Image</label>
+      <input
+        type="file"
+        id="file"
+        class="file-input"
+        (change)="onFileChange($event)"
+        accept="image/*"
+      />
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+  </form>
+</div>

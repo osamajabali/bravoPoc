@@ -1,0 +1,111 @@
+.custom-container { 
+    background-image: url('../../assets/images/webexBackground.png');
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .logo-img {
+        width: 21%;
+        margin-bottom: 20px; // Added spacing between logo and other elements
+    }
+
+    .h5 {
+        font-size: 18px;
+        color: #fff; // Ensure the text remains readable on the background
+        margin-bottom: 10px;
+    }
+
+    .mat-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .mat-mdc-card {
+            background: radial-gradient(circle, rgb(47 89 127 / 46%) 2%, rgb(33 83 115 / 68%) 79%, rgb(98 137 175 / 36%) 100%, rgb(255 255 255) 100%);           
+        }
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        font-size: 14px;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.2); // Subtle hover effect
+        }
+    }
+
+    .text-white {
+        color: #fff;
+    }
+}
+
+.mat-container {
+    padding: 0px 20px 20px 20px;
+    .join {
+      background: linear-gradient(to right, #0087c3, #009f96);
+      border-radius: 10px;
+      border: none;
+      color: white;
+      font-weight: bold;
+      transition: background-color 0.3s;
+  
+      &:hover {
+        background-color: #7ca2b4; // Darker shade on hover
+      }
+  
+      &:disabled {
+        background-color: #b0c4d1; // Lighter color when disabled
+        cursor: not-allowed;
+      }
+    }
+  
+    mat-form-field {
+      width: 100%;
+        border: none;
+      input {
+        background-color: transparent !important;
+        color: white !important;
+        font-size: 12px;
+        border-color: aqua;
+  
+        &::placeholder {
+          color: white;
+          opacity: 0.8;
+        }
+      }
+  
+      mat-label {
+        color: white;
+        font-size: 14px;
+      }
+    }
+  
+    h5 {
+      font-size: 18px;
+      color: white;
+    }
+
+}
+
+.card-container{
+    width: 100%;
+}
+
+.icons-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+mat-icon{
+    color: white;
+}

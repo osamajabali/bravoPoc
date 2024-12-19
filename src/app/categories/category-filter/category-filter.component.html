@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Filter</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Category Id Field -->
+      <mat-form-field appearance="outline" class="full-width custom-field">
+        <mat-label>Category Id</mat-label>
+        <input matInput formControlName="categoryId" type="text" placeholder="Enter text" required>
+      </mat-form-field>
+  
+      <!-- Category Name Field -->
+      <mat-form-field appearance="outline" class="full-width custom-field">
+        <mat-label>Category Name</mat-label>
+        <input matInput formControlName="categoryName" type="text" placeholder="Enter name" required>
+      </mat-form-field>
+  
+  
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </div>
+  
